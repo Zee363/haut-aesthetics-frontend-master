@@ -1,0 +1,11 @@
+.fashion-container {
+    margin-top: 50px;
+  }
+  
+  .fashion-container .shorter-image {
+    height: 650px !important;
+  }
+  
+  .fashion-container .short-image {
+    height: 592px !important;
+  }

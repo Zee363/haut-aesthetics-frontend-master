@@ -1,0 +1,17 @@
+svg {
+    width: 60px;
+    font-size: xx-large;
+  }
+  
+  .app-container, .footer-span {
+    background-color: grey;
+  }
+
+  .app-container {
+    width: 97%;
+    margin-left: 21px;
+    border-radius: 4px;
+  }
+   h2{
+    padding-left: 10px;
+   }
