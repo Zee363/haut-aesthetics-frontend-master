@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "../pages/Home.css";
 import "../pages/Signup.css";
@@ -7,16 +6,6 @@ import "../pages/Login.css";
 
 const Home = () => {
     return (
-        <div>
-        <span className="buttons-container">
-             <button className="signup-button">
-                        <Link to="/signup">SIGNUP</Link>
-                        </button>
-                        <button className="login-button">
-                           <Link to="/login">LOGIN</Link>
-                           </button>
-                            </span>
-
       <div className="grid-container container-fluid">
         <div className="item-image1">
           <img src="./home-pic1.webp" alt="Perfume."  className="img-fluid"/>
@@ -52,7 +41,6 @@ const Home = () => {
         <div className="item image5">
           <img src="./home-pic5.webp" alt="Skin care products." className="img-fluid"/>
         </div>
-      </div>
       </div>
     );
   };

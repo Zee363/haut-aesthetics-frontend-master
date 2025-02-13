@@ -43,7 +43,7 @@ const LoginForm = () => {
     console.log('Login successful:', data);
 
   // Redirect to the home page upon successful login
- navigate("/");
+ navigate("/home");
 
   } catch (error) {
     console.error('Error during signup:', error);

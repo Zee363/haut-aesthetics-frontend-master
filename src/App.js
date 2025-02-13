@@ -7,6 +7,7 @@ import Footer from "./components/Footer";
 import Beauty from './pages/Beauty';
 import Fashion from "./pages/Fashion";
 import Lifestyle from "./pages/Lifestyle";
+import LifestyleDetail from "./pages/LifestyleDetail";
 import About from "./pages/About";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
@@ -18,12 +19,13 @@ function App() {
       <Header/>
     <Navbar/>
       <Routes>
-        <Route path="/" element={< Home/>}></Route>
+        <Route path="/" element={<Signup/>}></Route>
+        <Route path="/home" element={< Home/>}></Route>
         <Route path="/beauty" element={<Beauty/>}></Route>
         <Route path="/fashion" element={<Fashion/>}></Route>
         <Route path="/lifestyle" element={<Lifestyle/>}></Route>
+        <Route path="/lifestyle/:id" element={<LifestyleDetail/>}></Route>
         <Route path="/about" element={<About/>}></Route>
-        <Route path="/signup" element={<Signup/>}></Route>
         <Route path="/login" element={<Login/>}></Route>
     </Routes>
     <Footer/>
