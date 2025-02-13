@@ -13,6 +13,7 @@ import LifestyleDetail from "./pages/LifestyleDetail";
 import About from "./pages/About";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
+import CreatePost from "./pages/CreatePost";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         <Route path="/:id" element={<LifestyleDetail/>}></Route>
         <Route path="/about" element={<About/>}></Route>
         <Route path="/login" element={<Login/>}></Route>
+        <Route path="/post" element={<CreatePost/>}></Route>
     </Routes>
     <Footer/>
   </Router>  
