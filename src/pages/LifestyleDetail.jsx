@@ -24,7 +24,7 @@ const LifestyleDetail = () => {
         };
 
         fetchLifestylePost();
-        
+
     }, [id]);
 
     if (loading) return <p>Loading...</p>;
@@ -52,8 +52,7 @@ const LifestyleDetail = () => {
     
           {/* Render images */}
           <div className="images">
-            {lifestylePost?.images &&
-              lifestylePost?.images.map((image, index) => (
+            {lifestylePost?.images.map((image, index) => (
                 <img key={index} src={image} alt={`image-${index}`} />
               ))}
           </div>

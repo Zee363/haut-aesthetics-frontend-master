@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import Navbar from './components/Navbar';
 import Footer from "./components/Footer";
 import Beauty from './pages/Beauty';
+import BeautyDetail from './pages/BeautyDetail';
 import Fashion from "./pages/Fashion";
 import Lifestyle from "./pages/Lifestyle";
 import LifestyleDetail from "./pages/LifestyleDetail";
@@ -22,16 +23,18 @@ function App() {
         <Route path="/" element={<Signup/>}></Route>
         <Route path="/home" element={< Home/>}></Route>
         <Route path="/beauty" element={<Beauty/>}></Route>
+        <Route path="/:id" element={<BeautyDetail/>}></Route>
         <Route path="/fashion" element={<Fashion/>}></Route>
         <Route path="/lifestyle" element={<Lifestyle/>}></Route>
-        <Route path="/lifestyle/:id" element={<LifestyleDetail/>}></Route>
+        <Route path="/id" element={<LifestyleDetail/>}></Route>
         <Route path="/about" element={<About/>}></Route>
         <Route path="/login" element={<Login/>}></Route>
     </Routes>
     <Footer/>
   </Router>  
    </div>
-  );
+
+)
 }
 
 export default App;
