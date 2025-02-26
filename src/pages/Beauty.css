@@ -14,3 +14,16 @@
     text-align: center;
     margin-left: -160px !important;
   }
+
+  .post {
+    margin-left: 120px;
+  }
+
+  .post h1, h2{
+     margin-top: 10px;
+  }
+
+  .images img {
+   margin-top: 10px;
+   margin-bottom: 10px;
+  }

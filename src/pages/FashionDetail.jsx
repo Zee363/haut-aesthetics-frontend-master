@@ -1,5 +1,6 @@
 import React, { useState, useEffect} from "react";
 import { useParams } from "react-router-dom";
+import "../pages/Fashion.css";
 
 const FashionPost = () => {
     const { id } = useParams();
@@ -31,7 +32,7 @@ const FashionPost = () => {
         if (error) return <p>Error: {error}</p>;
     
         return (
-            <div>
+            <div className="post">
               <h1>{FashionPost?.title}</h1>
               <h2>{FashionPost?.category}</h2>
         
@@ -51,10 +52,10 @@ const FashionPost = () => {
                 ))}
         
               {/* Render images */}
-              <div className="images">
+              <div className="images" style={{ display: 'flex', gap: '60px', flexWrap: 'wrap' }}>
                 {FashionPost?.images &&
                  FashionPost?.images.map((image, index) => (
-                    <img key={index} src={image} alt={`image-${index}`} />
+                    <img key={index} src={image} alt={`image-${index}`} style={{ width: '230px', height: 'auto' }}/>
                   ))}
               </div>
             </div>

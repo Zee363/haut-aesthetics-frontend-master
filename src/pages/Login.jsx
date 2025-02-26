@@ -63,6 +63,7 @@ const LoginForm = () => {
             name="email"
             value={formData.email}
             onChange={handleChange}
+            autoComplete="email"
             required
           />
         </div>
@@ -74,12 +75,13 @@ const LoginForm = () => {
             name="password"
             value={formData.password}
             onChange={handleChange}
+            autoComplete="password"
             required
           />
         </div>
         <span className="button">
         <button type="submit">Login</button>
-        <p className="button-par">Don't already have an account?<Link to={"/signup"}>Signup</Link></p>
+        <p className="button-par">Don't already have an account?<Link to={"/"}>Signup</Link></p>
         </span>
       </form>
     </div>

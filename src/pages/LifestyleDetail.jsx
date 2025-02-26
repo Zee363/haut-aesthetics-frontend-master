@@ -1,9 +1,10 @@
 import React, { useState, useEffect} from "react";
 import { useParams } from "react-router-dom";
+import "../pages/Lifestyle.css";
 
-const LifestyleDetail = () => {
+const LifestylePost = () => {
     const { id } = useParams();
-    const [lifestylePost, setLifestylePost] = useState(null);
+    const [LifestylePost, setLifestylePost] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
@@ -27,17 +28,17 @@ const LifestyleDetail = () => {
         
     }, [id]);
 
-    if (loading) return <p>Loading...</p>;
+    if (loading) return <p>Loading</p>;
     if (error) return <p>Error: {error}</p>;
 
     return (
-        <div>
-          <h1>{lifestylePost?.title}</h1>
-          <h2>{lifestylePost?.category}</h2>
+        <div className="post">
+          <h1>{LifestylePost?.title}</h1>
+          <h2>{LifestylePost?.category}</h2>
     
           {/* Render paragraphs */}
-          {lifestylePost?.paragraphs &&
-            lifestylePost?.paragraphs.map((paragraph, index) => (
+          {LifestylePost?.paragraphs &&
+            LifestylePost?.paragraphs.map((paragraph, index) => (
               <div key={index}>
                 {typeof paragraph === "string" ? (
                   <p>{paragraph}</p>
@@ -52,8 +53,8 @@ const LifestyleDetail = () => {
     
           {/* Render images */}
           <div className="images">
-            {lifestylePost?.images &&
-              lifestylePost?.images.map((image, index) => (
+            {LifestylePost?.images &&
+              LifestylePost?.images.map((image, index) => (
                 <img key={index} src={image} alt={`image-${index}`} />
               ))}
           </div>
@@ -62,4 +63,4 @@ const LifestyleDetail = () => {
 
 }
 
-export default LifestyleDetail;
+export default LifestylePost;

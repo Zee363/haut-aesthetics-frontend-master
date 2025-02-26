@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const Signup = () => {
     const [formData, setFormData] = useState({
-       fullname: "",
+       fullName: "",
         email: "",
         password: "",
     });
@@ -22,7 +22,7 @@ const Signup = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("Submtted:", formData);
+        console.log("Submitted:", formData);
     
     try {
         const response = await fetch("http://localhost:5000/api/auth/signup",  {
@@ -56,8 +56,8 @@ const Signup = () => {
             <h3>Don't have an account? Create one now!</h3>
            <form onSubmit={handleSubmit}>
            <div className="form-group">
-            <label htmlFor="fullname">Full Name</label>
-            <input type="text" id="fullname" name="fullname" value={formData.fullname} onChange={handleChange}  required/>
+            <label htmlFor="fullName">Full Name</label>
+            <input type="text" id="fullName" name="fullName" value={formData.fullName} onChange={handleChange} required/>
             </div>
             <div className="form-group">
                 <label htmlFor="email">Email</label>

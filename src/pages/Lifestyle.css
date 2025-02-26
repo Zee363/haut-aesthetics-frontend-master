@@ -5,3 +5,12 @@
   .lifestyle-container .short-image {
     height: 560px !important;
   } 
+
+  .post {
+    margin-left: 130px;
+  }
+
+  .post h1, h2{
+    text-align: center;
+    margin-top: 10px;
+  }

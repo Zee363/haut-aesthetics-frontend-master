@@ -22,7 +22,7 @@ const Beauty = () => {
         </div>
         <div class="col-sm-6">
           <img src="./beauty4.webp" alt="Botanical balm"  className="img-fluid"/>
-          <Link to={"/3"}><h3>The SOS Treatment You Need</h3></Link>
+          <Link to={"/health/3"}><h3>The SOS Treatment You Need</h3></Link>
         </div>
       </div>
     </div>

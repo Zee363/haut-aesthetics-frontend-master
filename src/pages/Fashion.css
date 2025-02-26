@@ -13,3 +13,11 @@ h4 {
   .fashion-container .short-image {
     height: 592px !important;
   }
+
+  .post {
+    margin-left: 100px;
+  }
+
+  .post h1, h2{
+    margin-top: 10px;
+  }

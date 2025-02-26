@@ -5,7 +5,7 @@ const Header = () => {
   return (
     <div className="header container-fluid">
       <header>
-        <h1>HAUT AESTETHICS</h1>
+        <h1>HAUT AESTHETICS</h1>
       </header>
     </div>
   );
