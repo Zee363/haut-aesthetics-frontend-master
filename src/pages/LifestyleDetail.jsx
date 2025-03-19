@@ -12,10 +12,12 @@ const LifestylePost = () => {
         const fetchLifestylePost = async () => {
             try {
                 const response = await fetch(`http://localhost:5000/api/lifestyle/${id}`);
+                
                 if (!response.ok) {
                     throw new Error("Network has trouble connection");
                 }
                 const result = await response.json();
+                console.log("Fetched post:", result);
                 setLifestylePost(result);
                 setLoading(false);
             }  catch (error) {
@@ -25,8 +27,42 @@ const LifestylePost = () => {
         };
 
         fetchLifestylePost();
+      }, [id]);
+
+      const insertPostIntoDatabase = async () => {
+                try {
+                    // Make the POST request with the id included in the URL
+                    const response = await fetch(`http://localhost:5000/api/lifestyle`, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({
+                           pageTitle: LifestylePost.pageTitle,
+                           title: LifestylePost.title,
+                           category: LifestylePost.category, 
+                            paragraphs: LifestylePost.paragraphs,
+                            images: LifestylePost.images      
+                        }),
+                    });
         
-    }, [id]);
+      
+                    if (!response.ok) {
+                        throw new Error("Failed to insert post into the database");
+                    }
+        
+                    const result = await response.json();
+                    console.log("Post inserted successfully:", result);
+                } catch (error) {
+                    console.error("Error inserting post:", error);
+                }
+            };
+        
+            useEffect(() => {
+                if (LifestylePost) {
+                    insertPostIntoDatabase(); // Insert post into the database
+                }
+            }, [LifestylePost]);
 
     if (loading) return <p>Loading</p>;
     if (error) return <p>Error: {error}</p>;
@@ -52,10 +88,10 @@ const LifestylePost = () => {
             ))}
     
           {/* Render images */}
-          <div className="images">
+          <div className="images" style={{ display: 'flex', gap: '90px', flexWrap: 'wrap' }}>
             {LifestylePost?.images &&
               LifestylePost?.images.map((image, index) => (
-                <img key={index} src={image} alt={`image-${index}`} />
+                <img key={index} src={image} alt={`image-${index}`} style={{ width: '230px', height: 'auto', display: 'center' }} />
               ))}
           </div>
         </div>

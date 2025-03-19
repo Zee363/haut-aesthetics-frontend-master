@@ -16,6 +16,7 @@ const FashionPost = () => {
                         throw new Error("Network has trouble connection");
                     }
                     const result = await response.json();
+                    console.log("Fetched post:", result);
                     setFashionPost(result);
                     setLoading(false);
                 }  catch (error) {
@@ -27,6 +28,41 @@ const FashionPost = () => {
             fetchFashionPost();
             
         }, [id]);
+
+        const insertPostIntoDatabase = async () => {
+                  try {
+                      // Make the POST request with the id included in the URL
+                      const response = await fetch(`http://localhost:5000/api/fashion`, {
+                          method: "POST",
+                          headers: {
+                              "Content-Type": "application/json",
+                          },
+                          body: JSON.stringify({
+                             pageTitle: FashionPost.pageTitle,
+                             title: FashionPost.title,
+                             category: FashionPost.category, 
+                              paragraphs: FashionPost.paragraphs,
+                              images: FashionPost.images      
+                          }),
+                      });
+          
+        
+                      if (!response.ok) {
+                          throw new Error("Failed to insert post into the database");
+                      }
+          
+                      const result = await response.json();
+                      console.log("Post inserted successfully:", result);
+                  } catch (error) {
+                      console.error("Error inserting post:", error);
+                  }
+              };
+          
+              useEffect(() => {
+                  if (FashionPost) {
+                      insertPostIntoDatabase(); // Insert post into the database
+                  }
+              }, [FashionPost]);
     
         if (loading) return <p>Loading</p>;
         if (error) return <p>Error: {error}</p>;

@@ -1,16 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../pages/Signup.css";
 import { Link } from "react-router-dom";
 
 const Signup = () => {
     const [formData, setFormData] = useState({
-       fullName: "",
+       fullname: "",
         email: "",
         password: "",
     });
      
     const navigate = useNavigate();
+
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -56,8 +57,8 @@ const Signup = () => {
             <h3>Don't have an account? Create one now!</h3>
            <form onSubmit={handleSubmit}>
            <div className="form-group">
-            <label htmlFor="fullName">Full Name</label>
-            <input type="text" id="fullName" name="fullName" value={formData.fullName} onChange={handleChange} required/>
+            <label htmlFor="fullname">Full Name</label>
+            <input type="text" id="fullname" name="fullname" value={formData.fullname} onChange={handleChange} required/>
             </div>
             <div className="form-group">
                 <label htmlFor="email">Email</label>

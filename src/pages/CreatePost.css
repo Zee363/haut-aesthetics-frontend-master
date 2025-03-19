@@ -23,3 +23,60 @@ form {
    text-align: center !important;
    margin-left: 10px !important;
 }
+
+.posts-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    margin-left: 90px;
+    margin-right: 90px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .posts-list h5 {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    font-style: italic;
+  }
+   
+  .added-post-lists {
+  background-color: #fff;
+  margin: 10px 0;
+  padding: 15px;
+  width: 80%;
+  max-width: 600px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .posts-list ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .create_button {
+    width: 120px;
+    margin-left: 40px;
+  }
+  .new_post_button_delete {
+    margin-bottom: 20px;
+    background-color: crimson;
+    width: 100px;
+  }
+
+  .new_post_button_edit {
+    margin-bottom: 20px;
+    width: 100px; 
+    margin-left: 70px;
+  }
+
+  span {
+    display: block;
+    margin: 0 auto;
+  }
