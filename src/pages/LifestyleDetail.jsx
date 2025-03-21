@@ -11,7 +11,7 @@ const LifestylePost = () => {
     useEffect(() => {
         const fetchLifestylePost = async () => {
             try {
-                const response = await fetch(`http://localhost:5000/api/lifestyle/${id}`);
+                const response = await fetch(`${process.env.REACT_APP_FRONTEND_LOCAL_URL}/api/lifestyle/${id}`);
                 
                 if (!response.ok) {
                     throw new Error("Network has trouble connection");
@@ -32,7 +32,7 @@ const LifestylePost = () => {
       const insertPostIntoDatabase = async () => {
                 try {
                     // Make the POST request with the id included in the URL
-                    const response = await fetch(`http://localhost:5000/api/lifestyle`, {
+                    const response = await fetch(`${process.env.REACT_APP_FRONTEND_LOCAL_URL}/api/lifestyle`, {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json",
