@@ -38,7 +38,7 @@ const CreatePost = () => {
         console.error("Error fetching posts:", error);
     }
       };
-          console.log('REACT_APP_FRONTEND_URL:', process.env.REACT_APP_FRONTEND_URL); 
+          console.log('REACT_APP_BACKEND_URL:', process.env.REACT_APP_BACKEND_URL); 
      
       useEffect(() => {
         fetchPosts();
@@ -69,7 +69,7 @@ const CreatePost = () => {
       const method = editId ? "PUT" : "POST";
 
         const response = await fetch(url, {
-            method: method,
+            method,
             headers: {
                 "Content-Type": "application/json",
             },
@@ -79,9 +79,8 @@ const CreatePost = () => {
           console.log('REACT_APP_BACKEND_URL:', process.env.REACT_APP_BACKEND_URL); 
 
         if (!response.ok) {
-          const errorData = await response.json();
-          console.error("Post creation failed:", errorData);
-          throw new Error("Post creation failed");
+          console.error("Post creating/updating failed:", await response.text());
+          throw new Error("Post creation/update failed");
         }
 
         const data = await response.json();
@@ -104,7 +103,7 @@ const CreatePost = () => {
           setFormData({...post, paragraphs: post.paragraphs});
         setEditId(post.id);
       }
-
+      
       const handleDelete = async (id) => {
         try {
             const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}api/newpost/${id}`, {
