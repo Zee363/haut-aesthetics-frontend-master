@@ -98,7 +98,7 @@ const CreatePost = () => {
 
       const handleDelete = async (id) => {
         try {
-            const response = await fetch(`${process.env.REACT_APP_FRONTEND_LOCAL_URL}/api/newpost/${id}`, {
+            const response = await fetch(`${process.env.REACT_APP_FRONTEND_LOCAL_URL}api/newpost/${id}`, {
                 method: "DELETE",
             });
             
@@ -110,6 +110,7 @@ const CreatePost = () => {
         } catch (error) {
           }
     };
+
 
 
 
