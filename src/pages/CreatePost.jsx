@@ -30,6 +30,7 @@ const CreatePost = () => {
             const sortedPosts = data.sort((a, b) => b.id - a.id);
             console.log("Fetched posts (sorted by id):", sortedPosts);
             setPosts(sortedPosts);
+            return;
         } else {
             throw new Error("Received non-JSON response from the server.");
         }
