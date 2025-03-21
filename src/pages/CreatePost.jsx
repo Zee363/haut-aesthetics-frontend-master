@@ -15,7 +15,7 @@ const CreatePost = () => {
 
       const fetchPosts = async () => {
           try {
-              const response = await fetch("http://localhost:5000/api/newpost");
+              const response = await fetch(`${process.env.REACT_APP_FRONTEND_LOCAL_URL}/api/newpost`);
               if (!response.ok) {
                   throw new Error("Failed to fetch posts.");
               }
@@ -29,6 +29,7 @@ const CreatePost = () => {
               console.error("Error fetching posts:", error);
           }
       };
+          console.log('REACT_APP_FRONTEND_LOCAL_URL:', process.env.REACT_APP_FRONTEND_LOCAL_URL); 
      
       useEffect(() => {
         fetchPosts();
@@ -55,7 +56,7 @@ const CreatePost = () => {
     
 
     try {
-      const url = editId ? `http://localhost:5000/api/newpost/${editId}` : "http://localhost:5000/api/newpost";
+      const url = editId ? `${process.env.REACT_APP_FRONTEND_LOCAL_URL}/api/newpost/${editId}` : `${process.env.REACT_APP_FRONTEND_LOCAL_URL}/api/newpost`;
       const method = editId ? "PUT" : "POST";
 
         const response = await fetch(url, {
@@ -65,6 +66,8 @@ const CreatePost = () => {
             },
             body: JSON.stringify(formData),
         });
+
+          console.log('REACT_APP_FRONTEND_LOCAL_URL:', process.env.REACT_APP_FRONTEND_LOCAL_URL); 
 
         if (!response.ok) {
           const errorData = await response.json();
@@ -95,7 +98,7 @@ const CreatePost = () => {
 
       const handleDelete = async (id) => {
         try {
-            const response = await fetch(`http://localhost:5000/api/newpost/${id}`, {
+            const response = await fetch(`${process.env.REACT_APP_FRONTEND_LOCAL_URL}/api/newpost/${id}`, {
                 method: "DELETE",
             });
             
@@ -107,6 +110,8 @@ const CreatePost = () => {
         } catch (error) {
           }
     };
+
+
 
           return (
             <div className="create-container container-fluid">

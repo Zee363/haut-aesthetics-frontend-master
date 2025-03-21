@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "../pages/Signup.css";
 import { Link } from "react-router-dom";
 
+
 const Signup = () => {
     const [formData, setFormData] = useState({
        fullname: "",
@@ -24,9 +25,10 @@ const Signup = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log("Submitted:", formData);
+
     
     try {
-        const response = await fetch("http://localhost:5000/api/auth/signup",  {
+        const response = await fetch(`${process.env.REACT_APP_FRONTEND_LOCAL_URL}/api/auth/signup`,  {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -34,6 +36,8 @@ const Signup = () => {
             body: JSON.stringify(formData),
           });
 
+          console.log('REACT_APP_FRONTEND_URL:', process.env.REACT_APP_FRONTEND_URL);
+          console.log('REACT_APP_FRONTEND_LOCAL_URL:', process.env.REACT_APP_FRONTEND_LOCAL_URL);     
   
         if (!response.ok) {
             const errorData = await response.json();
