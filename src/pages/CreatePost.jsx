@@ -15,21 +15,29 @@ const CreatePost = () => {
 
       const fetchPosts = async () => {
           try {
-              const response = await fetch(`${process.env.REACT_APP_FRONTEND_LOCAL_URL}/api/newpost`);
+              const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}api/newpost`);
               if (!response.ok) {
-                  throw new Error("Failed to fetch posts.");
+                  const text = await response.text();
+                   console.error('Server Error:', response.status, response.statusText,'Response body:', text,
+               );
+               return;
               }
-              const data = await response.json();
 
-              const sortedPosts = data.sort((a, b) => b.id - a.id);
-
-              console.log("Fetched posts(sorted by id):", sortedPosts);
-              setPosts(sortedPosts); 
-          } catch (error) {
-              console.error("Error fetching posts:", error);
-          }
+               const contentType = response.headers.get("content-type");
+               console.log('Content-Type:', contentType); // Log content-type for debugging
+        if (contentType && contentType.includes("application/json")) {
+          const data = await response.json();
+            const sortedPosts = data.sort((a, b) => b.id - a.id);
+            console.log("Fetched posts (sorted by id):", sortedPosts);
+            setPosts(sortedPosts);
+        } else {
+            throw new Error("Received non-JSON response from the server.");
+        }
+    } catch (error) {
+        console.error("Error fetching posts:", error);
+    }
       };
-          console.log('REACT_APP_FRONTEND_LOCAL_URL:', process.env.REACT_APP_FRONTEND_LOCAL_URL); 
+          console.log('REACT_APP_FRONTEND_URL:', process.env.REACT_APP_FRONTEND_URL); 
      
       useEffect(() => {
         fetchPosts();
@@ -56,18 +64,18 @@ const CreatePost = () => {
     
 
     try {
-      const url = editId ? `${process.env.REACT_APP_FRONTEND_LOCAL_URL}/api/newpost/${editId}` : `${process.env.REACT_APP_FRONTEND_LOCAL_URL}/api/newpost`;
+      const url = editId ? `${process.env.REACT_APP_BACKEND_URL}api/newpost/${editId}` : `${process.env.REACT_APP_BACKEND_URL}api/newpost`;
       const method = editId ? "PUT" : "POST";
 
         const response = await fetch(url, {
-            method,
+            method: method,
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(formData),
         });
 
-          console.log('REACT_APP_FRONTEND_LOCAL_URL:', process.env.REACT_APP_FRONTEND_LOCAL_URL); 
+          console.log('REACT_APP_BACKEND_URL:', process.env.REACT_APP_BACKEND_URL); 
 
         if (!response.ok) {
           const errorData = await response.json();
@@ -98,7 +106,7 @@ const CreatePost = () => {
 
       const handleDelete = async (id) => {
         try {
-            const response = await fetch(`${process.env.REACT_APP_FRONTEND_LOCAL_URL}api/newpost/${id}`, {
+            const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}api/newpost/${id}`, {
                 method: "DELETE",
             });
             
