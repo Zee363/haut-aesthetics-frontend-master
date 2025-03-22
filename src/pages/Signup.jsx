@@ -28,16 +28,14 @@ const Signup = () => {
 
     
     try {
-        const response = await fetch(`${process.env.REACT_APP_FRONTEND_LOCAL_URL}/api/auth/signup`,  {
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}api/auth/signup`,  {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify(formData),
           });
-
-          console.log('REACT_APP_FRONTEND_URL:', process.env.REACT_APP_FRONTEND_URL);
-          console.log('REACT_APP_FRONTEND_LOCAL_URL:', process.env.REACT_APP_FRONTEND_LOCAL_URL);     
+   
   
         if (!response.ok) {
             const errorData = await response.json();
