@@ -38,8 +38,7 @@ const CreatePost = () => {
           console.error("Error fetching posts:", error);
       }
   };
-  
-  console.log('REACT_APP_BACKEND_URL:', process.env.REACT_APP_BACKEND_URL); 
+   
   
   useEffect(() => {
       fetchPosts();
@@ -77,7 +76,6 @@ const CreatePost = () => {
             body: JSON.stringify(formData),
         });
 
-          console.log('REACT_APP_BACKEND_URL:', process.env.REACT_APP_BACKEND_URL); 
 
         if (!response.ok) {
           console.error("Post creating/updating failed:", await response.text());
@@ -121,14 +119,10 @@ const CreatePost = () => {
     };
 
 
-
-
           return (
             <div className="create-container container-fluid">
-              <h3>{editId ? "Edit Post" : "Create a New Lifestyle Post"}</h3>
-              {success && <p>Post {editId ? "updated" : "created"} successfully!</p>}
+              <h3>{editId ? "Edit Post" : "Create a New Post"}</h3>
 
-        
               <form onSubmit={handleSubmit}>
               <div>
                   <label>Page Title:</label>
@@ -164,7 +158,7 @@ const CreatePost = () => {
         
                 <div>
                   <label>Paragraphs:</label>
-                  <textarea
+                  <textarea rows={5} cols={30}
                     name="paragraphs"
                     value={formData.paragraphs}
                     onChange={handleChange}
