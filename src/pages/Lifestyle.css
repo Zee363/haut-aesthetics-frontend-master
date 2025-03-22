@@ -12,5 +12,6 @@
 
   .post h1, h2{
     text-align: center;
+    margin-right: 180px !important;
     margin-top: 10px;
   }

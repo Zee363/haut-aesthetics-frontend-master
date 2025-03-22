@@ -11,7 +11,7 @@ const LifestylePost = () => {
     useEffect(() => {
         const fetchLifestylePost = async () => {
             try {
-                const response = await fetch(`${process.env.REACT_APP_FRONTEND_LOCAL_URL}/api/lifestyle/${id}`);
+                const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}api/lifestyle/${id}`);
                 
                 if (!response.ok) {
                     throw new Error("Network has trouble connection");
@@ -32,7 +32,7 @@ const LifestylePost = () => {
       const insertPostIntoDatabase = async () => {
                 try {
                     // Make the POST request with the id included in the URL
-                    const response = await fetch(`${process.env.REACT_APP_FRONTEND_LOCAL_URL}/api/lifestyle`, {
+                    const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}api/lifestyle`, {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json",
@@ -88,10 +88,10 @@ const LifestylePost = () => {
             ))}
     
           {/* Render images */}
-          <div className="images" style={{ display: 'flex', gap: '90px', flexWrap: 'wrap' }}>
+          <div className="images" style={{ display: 'flex', gap: '150px', flexWrap: 'wrap' }}>
             {LifestylePost?.images &&
               LifestylePost?.images.map((image, index) => (
-                <img key={index} src={image} alt={`image-${index}`} style={{ width: '230px', height: 'auto', display: 'center' }} />
+                <img key={index} src={image} alt={`image-${index}`} style={{ width: '250px', height: 'auto', display: 'center' }} />
               ))}
           </div>
         </div>
