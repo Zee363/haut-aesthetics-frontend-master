@@ -13,36 +13,37 @@ const CreatePost = () => {
     const [editId, setEditId] = useState(null); // State to store the ID of the post being edited 
 
 
-      const fetchPosts = async () => {
-          try {
-              const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}api/newpost`);
-              if (!response.ok) {
-                  const text = await response.text();
-                   console.error('Server Error:', response.status, response.statusText,'Response body:', text,
-               );
-               return;
-              }
-
-               const contentType = response.headers.get("content-type");
-               console.log('Content-Type:', contentType); // Log content-type for debugging
-        if (contentType && contentType.includes("application/json")) {
-          const data = await response.json();
-            const sortedPosts = data.sort((a, b) => b.id - a.id);
-            console.log("Fetched posts (sorted by id):", sortedPosts);
-            setPosts(sortedPosts);
-            return;
-        } else {
-            throw new Error("Received non-JSON response from the server.");
-        }
-    } catch (error) {
-        console.error("Error fetching posts:", error);
-    }
-      };
-          console.log('REACT_APP_BACKEND_URL:', process.env.REACT_APP_BACKEND_URL); 
-     
-      useEffect(() => {
-        fetchPosts();
-    }, []);
+    const fetchPosts = async () => {
+      try {
+          const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}api/newpost`);
+          
+          // Check if the response status is not OK (i.e., outside 200-299 range)
+          if (!response.ok) {
+              const errorMessage = await response.text(); // Read server response
+              console.error('Server Error:', response.status, response.statusText, 'Response:', errorMessage);
+              return;  // Exit the function if response is not OK
+          }
+  
+          // Check if the response contains JSON data
+          const contentType = response.headers.get("content-type");
+          if (contentType && contentType.includes("application/json")) {
+              const data = await response.json();  // Parse the JSON response
+              const sortedPosts = data.sort((a, b) => b.id - a.id);  // Sort posts by ID
+              console.log("Fetched posts (sorted by id):", sortedPosts);
+              setPosts(sortedPosts);  // Set the posts state with the sorted data
+          } else {
+              console.error("Received non-JSON response from the server.");
+          }
+      } catch (error) {
+          console.error("Error fetching posts:", error);
+      }
+  };
+  
+  console.log('REACT_APP_BACKEND_URL:', process.env.REACT_APP_BACKEND_URL); 
+  
+  useEffect(() => {
+      fetchPosts();
+  }, []);
 
     const handleChange = (e) => {
       const { name, value } = e.target;
